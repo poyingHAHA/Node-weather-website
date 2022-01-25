@@ -11,6 +11,9 @@ const forecast = require("./utils/forecast")
 // console.log(path.join(__dirname, '../..'))
 // console.log(path.join(__dirname, '../public'))
 const app = express();
+// we can still use port:3000 when we're running the app locally on our machine. But Heroku is going to provide us
+// with a port value that we have to use when our app is running on Heroku. This is a value that changes over times and it's provided to our application via an environment variable.
+const port = process.env.PORT || 3000
 
 //Define pathes for Express config
 const publicDirPath = path.join(__dirname, "../public");
@@ -149,6 +152,6 @@ app.get('*', (req, res)=>{
 
 // To start the server up, we have to use one more method on app which will only ever use a single time.
 // app.listen, this starts up the server and it has to listen on a specific port for the moment.
-app.listen(3000, () => {
-  console.log("Server is up on port 3000.");
+app.listen(port, () => {
+  console.log("Server is up on port "+port+".");
 });

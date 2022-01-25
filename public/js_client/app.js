@@ -1,11 +1,11 @@
 console.log("Client side javascript file is loaded!");
 
 // we use then method on the return value from fetch and we provide to it the callback function.
-fetch('http://puzzle.mead.io/puzzle').then((response) => {
-    response.json().then((data) => { // this function is going to run when the JSON data has arrived and been passed right here.
-        console.log(data)
-    })
-})
+// fetch('http://puzzle.mead.io/puzzle').then((response) => {
+//     response.json().then((data) => { // this function is going to run when the JSON data has arrived and been passed right here.
+//         console.log(data)
+//     })
+// })
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
@@ -25,7 +25,7 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = '' // Empty string to clear any value that might have existed from a previous search
 
-    fetch('http://localhost:3000/weather?address='+location).then((response)=>{
+    fetch('/weather?address='+location).then((response)=>{
         response.json().then((data)=>{
             if(data.error){
                 messageOne.textContent = data.error
